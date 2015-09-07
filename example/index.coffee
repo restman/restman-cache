@@ -1,5 +1,3 @@
-cache = require '../'
-
 namespaceMap =
   'test1': 0
   'test2': 1
@@ -9,7 +7,9 @@ opts =
   port: 8220
 
 
-cache.init namespaceMap, opts
+cache = require('../')(opts, namespaceMap)
+
+console.log cache
 
 cache.set 'test2', 'hello', 'world', (err, result) ->
   console.log err, result

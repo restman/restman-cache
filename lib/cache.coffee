@@ -54,15 +54,12 @@ derc = (namespace, key, callback) ->
   _client.decr(unionKey, callback)
 
 
-cache = {}
-
 ##
 # namespaceMap key: namespace name  value: expire time, 0 forever
 # opts: createClient options
 ##
 
-cache.init = (namespaceMap, opts) ->
-  return cache is _client
+cache = (opts, namespaceMap) ->
 
   _namespaceMap = namespaceMap
   _client = redis.createClient(opts.port, opts.host)
